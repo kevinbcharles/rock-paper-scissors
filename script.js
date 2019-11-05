@@ -4,8 +4,8 @@ const result = document.querySelector("#result");
 const pics = document.querySelector("#pics");
 const player = document.querySelector("#player");
 const comp = document.querySelector("#comp");
-var outcome = [[0,1,2,3],["rock","tie","lose","win"],["paper","win","tie","lose"],
-["scissors","lose","win","tie"]];
+var outcome = [[0,1,2,3],["rock","tie","lose","win"],["paper","win","tie","lose"],["scissors","lose","win","tie"]];
+
 
 buttons.forEach((button) =>{
     button.addEventListener("click", (e) =>{
@@ -13,24 +13,42 @@ buttons.forEach((button) =>{
     });
 });
 
-function alertFunction(val,cval) {
+function alertFunction(val,cval,pval) {
     var theOutcome = val;
     var compHand = cval;
-    var scissorPic = document.createElement("img");
-    var rockPic = document.createElement("img");
-    var paperPic = document.createElement("img");
-    scissorPic.src = "https://st2.depositphotos.com/5811644/11354/i/950/depositphotos_113545414-stock-photo-old-rusty-scissors-isolated-on.jpg";
-    rockPic.src = "https://media2.fdncms.com/pittsburgh/imager/u/original/3507194/the_rock.jpg"
-    paperPic.src = "https://st2.depositphotos.com/2048845/11207/i/950/depositphotos_112075204-stock-photo-failing-grade-on-exam-or.jpg"
+    var playerHand = pval;
+    let resultText = document.createElement("p");
+    let playerScore = 0;
+    let compScore = 0;
+    const playerScoreBox = document.getElementById("playerScore");
+
+
+    resultText.innerHTML += ("You throw "+ playerHand+".");
+    resultText.innerHTML += ("<br>");
+    resultText.innerHTML += ("Computer throws " + twoWayMap.revGet(compHand) + ".");
+    resultText.innerHTML += ("<br>");
+    resultText.innerHTML += ("You " + theOutcome);
+    result.appendChild(resultText);
     
     
     
-    result.textContent += ("Computer throws " + twoWayMap.revGet(compHand) + ". " + "You " + theOutcome);
-    //player.appendChild(window[playerHand + "Pic"]);
-    compPic = twoWayMap.revGet(compHand) + "Pic";
-    console.log("compPic = "+compPic)
-    comp.src = "scissor.jpg";
-    comp.appendChild(comp);
+    
+    player.innerHTML = "Player<br><br><img src='" + playerHand + ".jpg' id='playerPic' class='notclicked'>";
+    comp.innerHTML = "Computer<br><br><img src='"+twoWayMap.revGet(compHand)+".jpg' style='float: right' id='compPic' class='hor notclicked'>";
+    if(theOutcome === "win") {
+        document.getElementById('playerPic').className = 'clicked';
+        playerScore += 1;
+    };
+    if(theOutcome === "lose") {
+        document.getElementById('compPic').className = 'hor clicked';
+        compScore +=1;
+    };
+    if(theOutcome === "tie") {
+        document.getElementById('playerPic').className = 'clicked';
+        document.getElementById('compPic').className = 'hor clicked';
+    };
+
+    playerScoreBox.innerText(playerScore);
 
 }
 
@@ -38,16 +56,16 @@ function image(val1, val2) {
 
 }
 
-function playGame(playerHand) {
+function playGame(val) {
     result.textContent = ("");
     let compHand = Math.ceil(Math.random()*3);
-    
+    let playerHand = val;
     
     //console.log("playerHand = "+ twoWayMap.get(playerHand));
     //console.log("compHand = "+compHand);
     //console.log("outcome = "+outcome[playerHand][compHand]);
 
-    alertFunction(outcome[twoWayMap.get(playerHand)][compHand],compHand);
+    alertFunction(outcome[twoWayMap.get(playerHand)][compHand],compHand, playerHand);
 }
 
 class TwoWayMap {

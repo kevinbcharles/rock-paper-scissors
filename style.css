@@ -1,5 +1,6 @@
 #container {
     margin-top: 100px;
+    text-align: center;
 }
 
 #result {
@@ -7,20 +8,47 @@
 }
 
 #pics {
-    display: flex;
-    justify-content: space-between;
+    /*display: flex;
+    /*justify-content: space-between;*/
     height: 50px;
+    width: 350px;
+    display: inline-block;
+    align-self: center;
 }
 
-img {
+.notclicked {
+
+    max-height: 75px;
+    max-width: auto;
+    transition: 0.5s;
+}
+
+.clicked {
+    max-height: 100px;
+    transition:0.5s;
+    /*border-color: goldenrod;
+    border-width: 5px;
+    /*border-style: solid;*/
+    box-shadow: 0 0 30px 5px rgba(218,165,32,1);
+}
+
+#player {
+    float: left;
     max-height: 100%;
     max-width: auto;
 }
 
-#player {
-    align-self: left;
+#comp {
+    float:right;
+    max-height: 100%;
+    max-width: auto;
 }
 
-#comp {
-    align-self: right;
+.hor {
+    -moz-transform:scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
 }
