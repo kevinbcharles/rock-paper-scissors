@@ -5,3 +5,22 @@
 #result {
     margin-top: 50px;
 }
+
+#pics {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+img {
+    max-height: 100%;
+    max-width: auto;
+}
+
+#player {
+    align-self: left;
+}
+
+#comp {
+    align-self: right;
+}
