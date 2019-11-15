@@ -5,6 +5,8 @@ const pics = document.querySelector("#pics");
 const player = document.querySelector("#player");
 const comp = document.querySelector("#comp");
 var outcome = [[0,1,2,3],["rock","tie","lose","win"],["paper","win","tie","lose"],["scissors","lose","win","tie"]];
+let playerScore = 0;
+let compScore = 0;
 
 
 buttons.forEach((button) =>{
@@ -18,9 +20,9 @@ function alertFunction(val,cval,pval) {
     var compHand = cval;
     var playerHand = pval;
     let resultText = document.createElement("p");
-    let playerScore = 0;
-    let compScore = 0;
+    
     const playerScoreBox = document.getElementById("playerScore");
+    const compScoreBox = document.getElementById("compScore");
 
 
     resultText.innerHTML += ("You throw "+ playerHand+".");
@@ -48,7 +50,9 @@ function alertFunction(val,cval,pval) {
         document.getElementById('compPic').className = 'hor clicked';
     };
 
-    playerScoreBox.innerText(playerScore);
+    playerScoreBox.innerText = playerScore;
+    compScoreBox.innerText = compScore;
+ 
 
 }
 

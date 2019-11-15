@@ -7,10 +7,17 @@
     margin-top: 50px;
 }
 
+.scorebox {
+    position: relative;
+    display: inline-block;
+    margin-inline: 100px;
+    margin-top: 50px;
+}
+
 #pics {
     /*display: flex;
     /*justify-content: space-between;*/
-    height: 50px;
+    height: 150px;
     width: 350px;
     display: inline-block;
     align-self: center;
